@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.core.js"></script>
+    <link href="https://cdn.bootcss.com/bulma/0.6.0/css/bulma.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: #efefef;
+        }
+
+        .drager {
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            background: #d84c29;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="app">
+        SSSSSSSSSSSSSSSSS
+        <div class="drager">drag</div>
+
+    </div> -->
+    <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                    <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+                </a>
+                <button class="button navbar-burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <section class="hero is-medium is-warning is-bold">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">
+                            Primary bold title
+                        </h1>
+                        <h2 class="subtitle">
+                            Primary bold subtitle
+                        </h2>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="hero is-medium is-primary is-bold">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">
+                            Primary bold title
+                        </h1>
+                        <h2 class="subtitle">
+                            Primary bold subtitle
+                        </h2>
+                    </div>
+                </div>
+            </section>
+
+            <section class="hero is-info is-large">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">
+                            Large title
+                        </h1>
+                        <h2 class="subtitle">
+                            Large subtitle
+                        </h2>
+                    </div>
+                </div>
+            </section>
+
+            <section class="hero is-success is-fullheight">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">
+                            Full Height title
+                        </h1>
+                        <h2 class="subtitle">
+                            Full Height subtitle
+                        </h2>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="hero is-info is-large">
+                <div class="search-input-wrap clearfix">
+                    <div class="form-input-wrap f-l" id='formWrap'>
+                        <form action="" class="input-kw-form">
+                            <input type="search" autocomplete="off" name="baike-search" placeholder="请输入关键词" class="input-kw">
+                        </form>
+                        <i class="iconfont if-message"></i>
+                        <i class="iconfont if-close"></i>
+                    </div>
+                    <i class="search-cancel f-l">取消</i>
+                </div>
+            </section>
+
+            <!-- <form action="searchNow">
+                <input type="search" id='s1'>
+            </form> -->
+
+
+        </nav>
+
+
+    </div>
+
+    <script>
+        window.onload = function () {
+
+            var container = document.getElementById('formWrap');
+            console.log(container);
+            var s = document.getElementsByClassName('input-kw')[0]
+
+            // container.on('submit', '.input-kw-form', function (event) {
+            //     var v = s.value;
+            //     alert(v);
+            //     event.preventDefault();
+            // })
+
+            container.onsubmit = function () {
+                var v = s.value;
+                alert(v);
+                // event.preventDefault();
+                return false;
+            }
+
+         
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>ECahrt 示例</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<!-- <link rel="stylesheet" type="text/css" href="../css/app.css" /> -->
+		<style>
+			.chart {
+				height: 46vw;
+				margin: 2px 10px;
+				padding: 0px;
+			}
+			
+			h5 {
+				margin-top: 30px;
+				font-weight: bold;
+			}
+			
+			h5:first-child {
+				margin-top: 15px;
+			}
+			
+			.onc-pie {
+				width: 20vw;
+				height: 20vw;
+				border-radius: 50%;
+			}
+			.purplePie {
+				/*background:-webkit-radial-gradien(#828eff, #838fff);*/  
+				background-image: -webkit-radial-gradient(#828eff, #838fff);
+			}
+			.cyanPie {
+				background-image: -webkit-radial-gradient(#01cbbd, #01cbbc);
+			}
+			.bluePie {
+				background-image: -webkit-radial-gradient(#1cacf3, #1dabf4);
+			}
+			.depurplePie {
+				background-image: -webkit-radial-gradient(#c097ff, #c097ff);
+			}
+	
+			.onc-section {
+				margin-bottom: 1.25rem;
+			}
+			.chartTitle {
+				width: 70%;
+				margin: 0 auto;
+				height: 30px;
+				text-align: center;
+			}
+			.onc-pie-large {
+				position: relative;
+				width: 46vw;
+				height: 46vw;
+				margin: 0 auto;
+				border-radius: 50%;   
+			}
+			.onc-pie-small {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				/*margin-top: -50%;
+				margin-left: 50%;*/
+				width: 30vw;
+				height: 30vw;
+				border-radius: 50%;
+				background: #c0504d;
+				
+			}
+			.onc-pie-text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				/*margin-top: -50%;
+				margin-left: 50%;*/
+				width: 20vw;
+				height: 20vw;
+				border-radius: 50%;
+			}
+			.onc-pie-text p{
+				font-size: 1.5rem;
+				color: #FFFFFF;
+				width: 100%;
+				height: 30px;
+				text-align: center;
+			}
+			.darkGreen {
+				background-image: -webkit-radial-gradient(#80a03e, #8db143);
+			}
+			.darkRed {
+				background-image: -webkit-radial-gradient(#c0504d, #c0504d);
+			}
+			
+			.person-head {
+				width: 100%;
+				height: 45.6vw;
+				background: #11aff9;
+				overflow: hidden;
+			}
+			.person-head-name {
+				height: 17.5vw;
+				margin-top: 9.4vw;
+				margin-bottom: 5.3vw;
+				display: flex;
+				align-items: center;
+				
+			}
+			.person-head-name img {
+				width: 17.5vw;
+				height: 17.5vw;
+				margin: 0 6.56vw;
+				border-radius: 4px;
+			}
+			.person-head-name span {
+				color: #FFFFFF;
+			}
+			.person-head-detailes {
+				height: 13.4vh;
+				display: flex;
+				justify-content: center;
+				align-content: center;
+			}
+			.person-head-detail {
+				width: 33.3vw;
+				height: 13.4vh;
+				border-right: 1px solid #FFFFFF;
+				background: #00a5e5;
+				padding-top: 2vw;
+			}
+			.person-head-detail:nth-child(3) {
+				border: none;
+			}
+			.person-head-detail p{
+				text-align: center;
+				color: #FFFFFF;
+				margin-top: 0px;
+				margin-bottom: 0px;
+				
+			}
+			
+			
+			
+			.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-s6z2{text-align:center}
+			
+			.lightGray {
+				height: 1.75rem;
+				background: #cccccc;
+				
+			}
+			
+			.heavyGray {
+				background: #999999;
+
+			}
+			
+			
+		</style>
+		<script src="../js/mui.min.js"></script>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">chart（EChart图表）</h1>
+		</header>-->
+		
+		<div class="mui-content">
+			<div class="person-head">
+				<div class="person-head-name">
+					<img src="http://placeimg.com/300/300" alt="" />
+					<span>测试</span>
+				</div>
+				<div class="person-head-detailes">
+					<div class="person-head-detail">
+						<p>项目负责人</p>
+						<p>胡帅</p>
+					</div>
+					<div class="person-head-detail">
+						<p>开工日期</p>
+						<p>2017-10-01</p>
+					</div>
+					<div class="person-head-detail">
+						<p>竣工日期</p>
+						<p>2017-10-01</p>
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="mui-content-padded">
+				<div class="onc-section">
+					<div class="onc-section-main">
+						<p>产值分析</p>
+						<div class="mui-row">
+							<div class="mui-col-xs-6">
+								<div class="chart" id="pieChart"></div>
+								<p class="chartTitle">计划完成率（年）</p>
+							</div>
+							<div class="mui-col-xs-6">
+								<div class="chart" id="pieChart1"></div>
+								<p class="chartTitle">计划完成率（月）</p>
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div class="onc-section-detail">
+						<div class="mui-row">
+							<div class="mui-col-xs-3">
+								<div class="onc-pie purplePie"></div>
+							</div>
+							<div class="mui-col-xs-3">
+								<div class="onc-pie cyanPie"></div>
+							</div>
+							<div class="mui-col-xs-3">
+								<div class="onc-pie bluePie"></div>
+							</div>
+							<div class="mui-col-xs-3">
+								<div class="onc-pie depurplePie"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="onc-section">
+					<div class="onc-section-main">
+						<p>成本分析</p>
+						<div class="mui-row">
+							<div class="mui-col-xs-6">
+								<!--<div class="chart" id="pieChart"></div>-->
+								<div class="onc-pie-large darkGreen">
+									<div class="onc-pie-small">
+										<div class="onc-pie-text">
+											<p>成本</p>
+											<p>66%</p>
+										</div>
+									</div>
+								</div>
+								<p class="chartTitle">产值成本率（年）</p>
+							</div>
+							<div class="mui-col-xs-6">
+								<div class="chart" id="cbjgChart"></div>
+								<p class="chartTitle">成本结构图（年）</p>
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div class="onc-section-detail">
+						<div class="mui-row">
+							<div class="mui-col-xs-4">
+								<div class="chart" id="cbMouthChart"></div>
+							</div>
+							<div class="mui-col-xs-4">
+								<div class="chart" id="cbYearChart"></div>
+							</div>
+							<div class="mui-col-xs-4">
+								<div class="chart" id="cbTotalChart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="onc-section">
+					<div class="onc-section-main">
+						<p>毛利分析</p>
+						<div class="mui-row">
+							<div class="mui-col-xs-6">
+								<div class="chart" id="mllChart"></div>
+								<p class="chartTitle">毛利率（月）</p>
+							</div>
+							<div class="mui-col-xs-6">
+								<div class="chart" id="mlgxlChart"></div>
+								<p class="chartTitle">毛利率贡献率（月）</p>
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div class="onc-section-detail">
+						<div class="mui-row">
+							<div class="mui-col-xs-2"></div>
+							<div class="mui-col-xs-4">
+								<div class="onc-pie purplePie"></div>
+							</div>
+							<div class="mui-col-xs-2"></div>
+							<div class="mui-col-xs-4">
+								<div class="onc-pie cyanPie"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="mui-row">
+					<div class="chart" id="barChart"></div>
+					
+					<div class="lightGray">明细</div>
+
+					<table class="tg">
+					  <tr class="heavyGray">
+					    <th class="tg-s6z2">排名</th>
+					    <th class="tg-s6z2" colspan="3">项目</th>
+					    <th class="tg-s6z2" colspan="2">计划产量</th>
+					    <th class="tg-s6z2" colspan="2">实际产值</th>
+					    <th class="tg-s6z2" colspan="2">百分比</th>
+					  </tr>
+					  <tr>
+					    <td class="tg-s6z2">rank</td>
+					    <td class="tg-s6z2" colspan="3">3000_乌市地铁2号线1期工程projectName</td>
+					    <td class="tg-s6z2" colspan="2">astimentAmount</td>
+					    <td class="tg-s6z2" colspan="2">currentAmount</td>
+					    <td class="tg-s6z2" colspan="2">percentage</td>
+					  </tr>
+					</table>
+					
+				</div>
+				
+				<div class="mui-row">
+					<div class="chart" id="lineChart"></div>
+				</div>
+
+			</div>
+		</div>
+
+		<script src="../libs/echarts.common.min.js"></script>
+		<script src="../libs/echarts-liquidfill.min.js"></script>
+		<script src="../libs/theme/shine.js"></script>
+
+		<script>
+			var pieOption = {
+				calculable: false,
+				series: [{
+					name: '访问来源',
+					avoidLabelOverlap: false,
+					label: {
+						normal: {
+							show: false,
+							position: 'center'
+						},
+						emphasis: {
+							show: true,
+							textStyle: {
+								fontSize: '30',
+								fontWeight: 'bold'
+							}
+						}
+					},
+					labelLine: {
+						normal: {
+							show: false
+						}
+					},
+					type: 'pie',
+					radius: ['50%', '70%'],
+					data: [{
+						value: 33,
+						name: ''
+					}, {
+						value: 67,
+						name: ''
+					}]
+				}]
+			}
+
+			var lineOption = {
+				legend: {
+					data: ['蒸发量', '降水量']
+				},
+				grid: {
+					x: 35,
+					x2: 10,
+					y: 30,
+					y2: 25
+				},
+				toolbox: {
+					show: false,
+					feature: {
+						mark: {
+							show: true
+						},
+						dataView: {
+							show: true,
+							readOnly: false
+						},
+						magicType: {
+							show: true,
+							type: ['line', 'bar']
+						},
+						restore: {
+							show: true
+						},
+						saveAsImage: {
+							show: true
+						}
+					}
+				},
+				calculable: false,
+				xAxis: [{
+					type: 'category',
+					data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+				}],
+				yAxis: [{
+					type: 'value',
+					splitArea: {
+						show: true
+					}
+				}],
+				series: [{
+					name: '蒸发量',
+					type: 'line',
+					data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+				}, {
+					name: '降水量',
+					type: 'line',
+					data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+				}]
+			};
+			var barOption = {
+				legend: {
+					data: ['蒸发量', '降水量']
+				},
+				grid: {
+					x: 35,
+					x2: 10,
+					y: 30,
+					y2: 25
+				},
+				toolbox: {
+					show: false,
+					feature: {
+						mark: {
+							show: true
+						},
+						dataView: {
+							show: true,
+							readOnly: false
+						},
+						magicType: {
+							show: true,
+							type: ['line', 'bar']
+						},
+						restore: {
+							show: true
+						},
+						saveAsImage: {
+							show: true
+						}
+					}
+				},
+				calculable: false,
+				xAxis: [{
+					type: 'category',
+					data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+				}],
+				yAxis: [{
+					type: 'value',
+					splitArea: {
+						show: true
+					}
+				}],
+				series: [{
+					name: '蒸发量',
+					type: 'bar',
+					data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+				}, {
+					name: '降水量',
+					type: 'bar',
+					data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+				}]
+			}
+			var pieOption1 = {
+				calculable: false,
+				series: [{
+					name: '访问来源',
+					avoidLabelOverlap: false,
+					label: {
+						normal: {
+							show: false,
+							position: 'center'
+						},
+						emphasis: {
+							show: true,
+							textStyle: {
+								fontSize: '30',
+								fontWeight: 'bold'
+							}
+						}
+					},
+					labelLine: {
+						normal: {
+							show: false
+						}
+					},
+					type: 'pie',
+					radius: ['50%', '70%'],
+					data: [{
+						value: 78,
+						name: ''
+					}, {
+						value: 22,
+						name: ''
+					}]
+				}]
+			}
+			
+			option = {
+    title : {
+        text: '某站点用户访问来源',
+        subtext: '纯属虚构',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+    },
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'},
+                {value:135, name:'视频广告'},
+                {value:1548, name:'搜索引擎'}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+	cbjgoption = {
+	    title : {
+	        text: '',
+	        subtext: '',
+	        x:'center'
+	    },
+	    tooltip : {
+	        trigger: 'item',
+	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+	    },
+//	    legend: {
+//	        orient: 'vertical',
+//	        left: 'left',
+//	        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+//	    },
+	    series : [
+	        {
+	            name: '访问来源',
+	            type: 'pie',
+	            radius : '55%',
+	            center: ['50%', '60%'],
+	            data:[
+	                {value:335, name:'直接访问'},
+	                {value:310, name:'邮件营销'},
+	                {value:234, name:'联盟广告'},
+	                {value:135, name:'视频广告'},
+	                {value:1548, name:'搜索引擎'}
+	            ],
+	            itemStyle: {
+	                emphasis: {
+	                    shadowBlur: 10,
+	                    shadowOffsetX: 0,
+	                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+	                }
+	            }
+	        }
+	    ]
+	};
+
+			var liquidOption = {
+				series: [{
+					type: 'liquidFill',
+					data: [1]
+				}]
+			};
+
+			var byId = function(id) {
+				return document.getElementById(id);
+			};
+
+			function newChart(name) {
+				return echarts.init(byId(name), 'shine');
+			}
+
+			var barChart = newChart('barChart');
+			barChart.setOption(barOption);
+
+			var lineChart = newChart('lineChart');
+			lineChart.setOption(lineOption);
+
+			var pieChart = newChart('pieChart');
+			pieChart.setOption(pieOption);
+
+			var pieChart1 = newChart('pieChart1');
+			pieChart1.setOption(pieOption1);
+			
+			
+			var cbjgChart = newChart('cbjgChart');
+			cbjgChart.setOption(cbjgoption);
+			
+			var mllChart = newChart('mllChart');
+			mllChart.setOption(liquidOption);
+			
+			var mlgxlChart = newChart('mlgxlChart');
+			mlgxlChart.setOption(liquidOption);
+			
+			var cbMouthChart = newChart('cbMouthChart');
+			cbMouthChart.setOption(liquidOption);
+			
+			var cbYearChart = newChart('cbYearChart');
+			cbYearChart.setOption(liquidOption);
+			
+			var cbTotalChart = newChart('cbTotalChart');
+			cbTotalChart.setOption(liquidOption);
+
+			var liquidfillChart = newChart('liquidfill-chart');
+			liquidfillChart.setOption(liquidOption);
+
+	
+		</script>
+	</body>
+
+</html>
